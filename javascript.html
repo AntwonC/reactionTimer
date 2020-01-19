@@ -4,17 +4,62 @@
 
         <style type = "text/css">
 
-     
+        .boxes  {
+            background-color: red; 
+            height: 50px; 
+            width: 50px; 
+        }
+
+        .circles    {
+            background-color: blue; 
+            border-radius: 50%; 
+            height: 50px; 
+            width: 50px; 
+            position: relative; 
+            top: 10px; 
+        }
+
+        #color-red  {
+            background-color: red; 
+        }
+
+        #color-blue {
+            background-color: blue; 
+            
+        }
       
         </style>
     </head>
 
     <body> 
 
+        <h1> Reaction Timer </h1> 
+
+        <p> Test your reaction time with this game! </p> 
+
+
+        <div id = "timerWord">  
+            Timer 
+            <button> Start </button>
+            <button> Stop </button>
+        </div>
+
+        <div class = "boxes" id = "color-red" >  </div>
+        <div class = "boxes" id = "color-blue" >  </div>
+
+        
        
 
         <script type = "text/javascript"> 
+            
+           var squares = document.querySelectorAll(".boxes"); 
+           var keepGoing = true;
 
+           document.getElementById("color-blue").onclick = function()   {
+               document.getElementById("color-blue").style.background = "none"; 
+           }
+
+           
            
     
         </script> 
