@@ -4,10 +4,10 @@
 
         <style type = "text/css">
 
-        .boxes  {
+        #box  {
             background-color: red; 
-            height: 50px; 
-            width: 50px; 
+            height: 150px; 
+            width: 150px; 
         }
 
         .circles    {
@@ -19,14 +19,11 @@
             top: 10px; 
         }
 
-        #color-red  {
-            background-color: red; 
+        #timerWord  {
+            font-weight: bold; 
         }
 
-        #color-blue {
-            background-color: blue; 
-            
-        }
+        
       
         </style>
     </head>
@@ -39,25 +36,54 @@
 
 
         <div id = "timerWord">  
-            Timer 
-            <button> Start </button>
-            <button> Stop </button>
+           Timer  
         </div>
 
-        <div class = "boxes" id = "color-red" >  </div>
-        <div class = "boxes" id = "color-blue" >  </div>
-
         
+
+        <div id = "box"></div>
        
 
         <script type = "text/javascript"> 
             
            var squares = document.querySelectorAll(".boxes"); 
-           var keepGoing = true;
+           var keepGoing = false;
+           var startTime = new Date(); 
+           var boxElement = document.getElementById("box");
 
-           document.getElementById("color-blue").onclick = function()   {
-               document.getElementById("color-blue").style.background = "none"; 
-           }
+           
+            document.getElementById("box").onclick = function() {
+                boxElement.style.display = "none";
+                
+
+                var endTime = new Date(); 
+                var timeDiff = (endTime - startTime)/1000; 
+                keepGoing = true; 
+                
+                document.getElementById("timerWord").innerHTML = document.getElementById("timerWord").innerHTML +  ": "+ timeDiff + " seconds";
+               // console.log(timeDiff + " seconds");
+               setTimeout(generateBox, 9000);
+               // clear();
+                
+                
+            }
+
+            function generateBox()  {
+                boxElement.style.display = "block";
+                alert("hello");
+            }
+
+            function clear()    {
+                //document.getElementById("timerWord").innerHTML = "";
+                //document.getElementById("timerWord").innerHTML = document.getElementById("timerWord").innerHTML + "Timer";
+            }
+
+           
+
+            
+           
+
+           
 
            
            
