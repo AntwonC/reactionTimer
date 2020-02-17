@@ -48,8 +48,8 @@
             
            var squares = document.querySelectorAll(".boxes"); 
            var keepGoing = false;
-           var startTime = new Date(); 
            var boxElement = document.getElementById("box");
+           var startTime = new Date(); 
 
            
             document.getElementById("box").onclick = function() {
@@ -60,9 +60,10 @@
                 var timeDiff = (endTime - startTime)/1000; 
                 keepGoing = true; 
                 
-                document.getElementById("timerWord").innerHTML = document.getElementById("timerWord").innerHTML +  ": "+ timeDiff + " seconds";
+                document.getElementById("timerWord").innerHTML =  "Timer: "+ timeDiff + " seconds";
                // console.log(timeDiff + " seconds");
-               setTimeout(generateBox, 9000);
+               
+               setTimeout(generateBox, 3000);
                // clear();
                 
                 
@@ -70,7 +71,14 @@
 
             function generateBox()  {
                 boxElement.style.display = "block";
-                alert("hello");
+                //console.log(Math.floor(Math.random() * 100));
+                var randomWidth = Math.floor(Math.random() * 100); 
+                var randomHeight = Math.floor(Math.random() * 100);
+
+                boxElement.style.width = randomWidth + "px"; 
+                boxElement.style.height = randomHeight + "px";
+                startTime = new Date(); // I think this solves the time problem?
+              //  alert("hello");
             }
 
             function clear()    {
