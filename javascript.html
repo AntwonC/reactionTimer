@@ -8,9 +8,10 @@
             background-color: red; 
             height: 150px; 
             width: 150px; 
+            position: relative; 
         }
 
-        .circles    {
+        #circles    {
             background-color: blue; 
             border-radius: 50%; 
             height: 50px; 
@@ -42,15 +43,22 @@
         
 
         <div id = "box"></div>
+        <div id = "circles"> </div>
        
 
         <script type = "text/javascript"> 
             
-           var squares = document.querySelectorAll(".boxes"); 
+          // var squares = document.querySelectorAll(".boxes"); 
            var keepGoing = false;
            var boxElement = document.getElementById("box");
+           var circleElement = document.getElementById("circles");
+           circleElement.style.display = "none";
            var startTime = new Date(); 
 
+           // Can generate circles now.
+           // TODO: Generate boxes in random locations. (Should do this first ), but other seems more interestings
+           // NOTE: For above, finish doing it. Not complete yet. 
+           // TODO: Attempt to make them rotate between them now. 
            
             document.getElementById("box").onclick = function() {
                 boxElement.style.display = "none";
@@ -62,12 +70,44 @@
                 
                 document.getElementById("timerWord").innerHTML =  "Timer: "+ timeDiff + " seconds";
                // console.log(timeDiff + " seconds");
-               
-               setTimeout(generateBox, 3000);
+               var select_shape = Math.floor(Math.random() * 2 ); 
+               console.log(select_shape); 
+                
+               // Not sure how modular this is. 
+             /*  if ( select_shape == 0 ) {
+                   setTimeout(generateBox, 1000); 
+               }    else if ( select_shape == 1 )   {
+                   setTimeout(generateCircle, 1000);
+                
+               } */
+
+               setTimeout(generateBox, 3000); 
                // clear();
                 
                 
-            }
+            };
+
+            document.getElementById("circles").onclick = function()  {
+                circleElement.style.display = "none"; 
+
+                var endTime = new Date(); 
+                var timeDiff = (endTime - startTime)/1000; 
+                keepGoing = true; 
+                
+                document.getElementById("timerWord").innerHTML =  "Timer: "+ timeDiff + " seconds";
+               // console.log(timeDiff + " seconds");
+               
+               var select_shape = Math.floor(Math.random() * 2 ); 
+               console.log(select_shape); 
+
+               if ( select_shape == 0 ) {
+                   setTimeout(generateBox, 1000); 
+               }    else if ( select_shape == 1 )   {
+                   setTimeout(generateCircle, 1000);
+                
+               }
+             
+            };
 
             function generateBox()  {
                 boxElement.style.display = "block";
@@ -77,8 +117,24 @@
 
                 boxElement.style.width = randomWidth + "px"; 
                 boxElement.style.height = randomHeight + "px";
+
+                boxElement.style.top = "100px";
+                boxElement.style.left = "50px"; 
                 startTime = new Date(); // I think this solves the time problem?
+                
               //  alert("hello");
+            }
+
+            function generateCircle() {
+                circleElement.style.display = "block";
+
+                var randomWidth = Math.floor(Math.random() * 100); 
+                var randomHeight = Math.floor(Math.random() * 100);
+
+                circleElement.style.width = randomWidth + "px"; 
+                circleElement.style.height = randomHeight + "px";
+
+                startTime = new Date(); // I think this solves the time problem?
             }
 
             function clear()    {
