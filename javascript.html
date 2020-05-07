@@ -74,14 +74,14 @@
                console.log(select_shape); 
                 
                // Not sure how modular this is. 
-             /*  if ( select_shape == 0 ) {
+               if ( select_shape == 0 ) {
                    setTimeout(generateBox, 1000); 
                }    else if ( select_shape == 1 )   {
                    setTimeout(generateCircle, 1000);
                 
-               } */
+               } 
 
-               setTimeout(generateBox, 3000); 
+            //   setTimeout(generateBox, 3000); 
                // clear();
                 
                 
@@ -117,9 +117,16 @@
 
                 boxElement.style.width = randomWidth + "px"; 
                 boxElement.style.height = randomHeight + "px";
+                
+                var randomTop = Math.floor(Math.random() * 700); 
+                var randomLeft = Math.floor(Math.random() * 700); 
+                var randomRight = Math.floor(Math.random() * 700); 
+                var randomBottom = Math.floor(Math.random() * 700); 
+                boxElement.style.top = randomTop + "px";
+                boxElement.style.left = randomLeft + "px"; 
+                boxElement.style.bottom = randomBottom + "px"; 
+                boxElement.style.right = randomRight + "px"; 
 
-                boxElement.style.top = "100px";
-                boxElement.style.left = "50px"; 
                 startTime = new Date(); // I think this solves the time problem?
                 
               //  alert("hello");
@@ -133,6 +140,15 @@
 
                 circleElement.style.width = randomWidth + "px"; 
                 circleElement.style.height = randomHeight + "px";
+
+                var randomTop = Math.floor(Math.random() * 700); 
+                var randomLeft = Math.floor(Math.random() * 700); 
+                var randomRight = Math.floor(Math.random() * 700); 
+                var randomBottom = Math.floor(Math.random() * 700); 
+                circleElement.style.top = randomTop + "px";
+                circleElement.style.left = randomLeft + "px"; 
+                circleElement.style.bottom = randomBottom + "px"; 
+                circleElement.style.right = randomRight + "px"; 
 
                 startTime = new Date(); // I think this solves the time problem?
             }
