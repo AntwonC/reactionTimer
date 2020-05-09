@@ -20,6 +20,16 @@
             top: 10px; 
         }
 
+        #triangle   {
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 50px solid #555;
+            position: relative; 
+            
+        }
+
         #timerWord  {
             font-weight: bold; 
         }
@@ -44,33 +54,44 @@
 
         <div id = "box"></div>
         <div id = "circles"> </div>
+        <div id = "triangle"> </div>
        
 
         <script type = "text/javascript"> 
             
           // var squares = document.querySelectorAll(".boxes"); 
+          // TODO: Can maybe make a random shape appear every time youu load up the page instead of the square. 
            var keepGoing = false;
            var boxElement = document.getElementById("box");
            var circleElement = document.getElementById("circles");
+           var triangleElement = document.getElementById("triangle"); 
            circleElement.style.display = "none";
+           triangleElement.style.display = "none"; 
            var startTime = new Date(); 
 
            // Can generate circles now.
            // TODO: Generate boxes in random locations. (Should do this first ), but other seems more interestings
            // NOTE: For above, finish doing it. Not complete yet. 
-           // TODO: Attempt to make them rotate between them now. 
-           
+           // TODO: Attempt to make them rotate between them now. (Done 5-7-2020)
+           // TODO: Add more shapes and rotate between them.
+           // TODO: Add a point system and then put a congratulate message.  
+           // TODO: Make the shape go away after a certain amount of time for a game. 
+           // TODO: Random colors for shapes. 
+
             document.getElementById("box").onclick = function() {
                 boxElement.style.display = "none";
                 
-
                 var endTime = new Date(); 
                 var timeDiff = (endTime - startTime)/1000; 
                 keepGoing = true; 
                 
                 document.getElementById("timerWord").innerHTML =  "Timer: "+ timeDiff + " seconds";
                // console.log(timeDiff + " seconds");
-               var select_shape = Math.floor(Math.random() * 2 ); 
+               var select_shape = Math.floor(Math.random() * 3 ); 
+               var red = Math.floor(Math.random() * 255); 
+               var blue = Math.floor(Math.random() * 255); 
+               var green = Math.floor(Math.random() * 255);
+               boxElement.style.backgroundColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
                console.log(select_shape); 
                 
                // Not sure how modular this is. 
@@ -78,8 +99,9 @@
                    setTimeout(generateBox, 1000); 
                }    else if ( select_shape == 1 )   {
                    setTimeout(generateCircle, 1000);
-                
-               } 
+               }   else if ( select_shape == 2 )   {
+                   setTimeout(generateTriangle, 1000); 
+               }
 
             //   setTimeout(generateBox, 3000); 
                // clear();
@@ -97,14 +119,47 @@
                 document.getElementById("timerWord").innerHTML =  "Timer: "+ timeDiff + " seconds";
                // console.log(timeDiff + " seconds");
                
-               var select_shape = Math.floor(Math.random() * 2 ); 
+               var select_shape = Math.floor(Math.random() * 3 ); 
                console.log(select_shape); 
+               var red = Math.floor(Math.random() * 255); 
+               var blue = Math.floor(Math.random() * 255); 
+               var green = Math.floor(Math.random() * 255);
+               circleElement.style.backgroundColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
 
                if ( select_shape == 0 ) {
                    setTimeout(generateBox, 1000); 
                }    else if ( select_shape == 1 )   {
                    setTimeout(generateCircle, 1000);
+               }    else if ( select_shape == 2 )   {
+                   setTimeout(generateTriangle, 1000); 
+               }
+             
+            };
+
+            document.getElementById("triangle").onclick = function()  {
+                triangleElement.style.display = "none"; 
+
+                var endTime = new Date(); 
+                var timeDiff = (endTime - startTime)/1000; 
+                keepGoing = true; 
                 
+                document.getElementById("timerWord").innerHTML =  "Timer: "+ timeDiff + " seconds";
+               // console.log(timeDiff + " seconds");
+               
+               var select_shape = Math.floor(Math.random() * 3 ); 
+               console.log(select_shape); 
+               var red = Math.floor(Math.random() * 255); 
+               var blue = Math.floor(Math.random() * 255); 
+               var green = Math.floor(Math.random() * 255);
+               triangleElement.style.borderBottomColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
+            //   triangleElement.style.borderLeftColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
+
+               if ( select_shape == 0 ) {
+                   setTimeout(generateBox, 1000); 
+               }    else if ( select_shape == 1 )   {
+                   setTimeout(generateCircle, 1000);        
+               }    else if ( select_shape == 2 )   {
+                   setTimeout(generateTriangle, 1000); 
                }
              
             };
@@ -149,6 +204,22 @@
                 circleElement.style.left = randomLeft + "px"; 
                 circleElement.style.bottom = randomBottom + "px"; 
                 circleElement.style.right = randomRight + "px"; 
+
+                startTime = new Date(); // I think this solves the time problem?
+            }
+
+            function generateTriangle() {
+                triangleElement.style.display = "block";
+
+
+                var randomTop = Math.floor(Math.random() * 700); 
+                var randomLeft = Math.floor(Math.random() * 700); 
+                var randomRight = Math.floor(Math.random() * 700); 
+                var randomBottom = Math.floor(Math.random() * 700); 
+                triangleElement.style.top = randomTop + "px";
+                triangleElement.style.left = randomLeft + "px"; 
+                triangleElement.style.bottom = randomBottom + "px"; 
+                triangleElement.style.right = randomRight + "px";  
 
                 startTime = new Date(); // I think this solves the time problem?
             }
