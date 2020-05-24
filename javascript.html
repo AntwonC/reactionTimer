@@ -2,57 +2,27 @@
     <head>     
         <title> Reaction Timer </title>
 
-        <style type = "text/css">
-
-        #box  {
-            background-color: red; 
-            height: 150px; 
-            width: 150px; 
-            position: relative; 
-        }
-
-        #circles    {
-            background-color: blue; 
-            border-radius: 50%; 
-            height: 50px; 
-            width: 50px; 
-            position: relative; 
-            top: 10px; 
-        }
-
-        #triangle   {
-            width: 0;
-            height: 0;
-            border-left: 25px solid transparent;
-            border-right: 25px solid transparent;
-            border-bottom: 50px solid #555;
-            position: relative; 
-            
-        }
-
-        #timerWord  {
-            font-weight: bold; 
-        }
-
-        
-      
-        </style>
+       <link rel = "stylesheet" href = "styles.css">
+       <script type = "text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
 
     <body> 
 
-        <h1> Reaction Timer </h1> 
-
-        <p> Test your reaction time with this game! </p> 
-
-
-        <div id = "timerWord">  
-           Timer  
+        <div id = "wrapper"> 
+            
+            <h1> Reaction Timer </h1> 
+            
+            <p> Test your reaction time with this game! </p> 
+            
+            
+            <div id = "timerWord">  
+                Timer  
+            </div>
+            
+            
+            <button id = "trial"> Click me to start! </button>  
         </div>
-
-        
-
-        <div id = "box"></div>
+            <div id = "box"></div>
         <div id = "circles"> </div>
         <div id = "triangle"> </div>
        
@@ -65,10 +35,10 @@
            var boxElement = document.getElementById("box");
            var circleElement = document.getElementById("circles");
            var triangleElement = document.getElementById("triangle"); 
-           circleElement.style.display = "none";
-           triangleElement.style.display = "none"; 
+          // circleElement.style.display = "none";
+          // triangleElement.style.display = "none"; 
            var startTime = new Date(); 
-
+        
            // Can generate circles now.
            // TODO: Generate boxes in random locations. (Should do this first ), but other seems more interestings
            // NOTE: For above, finish doing it. Not complete yet. 
@@ -77,6 +47,15 @@
            // TODO: Add a point system and then put a congratulate message.  
            // TODO: Make the shape go away after a certain amount of time for a game. 
            // TODO: Random colors for shapes. 
+           // TODO: Add a trial button to start the timer. 
+           
+           // To start the reaction timer. 
+           $("#trial").click(function() {
+               $("#trial").hide();
+               generateBox();  
+              // $("#box").show();
+              // boxElement.style.display = "block";
+           });
 
             document.getElementById("box").onclick = function() {
                 boxElement.style.display = "none";

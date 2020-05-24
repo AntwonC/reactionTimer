@@ -1,0 +1,47 @@
+#box  {
+    background-color: red; 
+    height: 150px; 
+    width: 150px; 
+    display: none; 
+    position: relative; 
+}
+
+#circles    {
+    background-color: blue; 
+    border-radius: 50%; 
+    height: 50px; 
+    width: 50px; 
+    display: none; 
+    position: relative; 
+    top: 10px; 
+}
+
+#triangle   {
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 50px solid #555;
+    display: none; 
+    position: relative; 
+
+}
+
+#timerWord  {
+    font-weight: bold; 
+}
+
+#wrapper    {
+    max-width: 300px; 
+    margin: auto; 
+}
+
+#trial  {
+    left: 70px;   
+    top: 50px; 
+    position: relative; 
+}
+
+p   {
+    width: 300px; 
+}
